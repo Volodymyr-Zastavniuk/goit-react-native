@@ -17,10 +17,11 @@ export const AuthFormStyles = StyleSheet.create({
     backgroundColor: Colors.white,
     gap: 16,
   },
+
   formTitle: {
     marginBottom: 17,
     alignSelf: 'center',
-    fontFamily: 'RobotoBold',
+    fontFamily: 'RobotoMedium',
     fontSize: 30,
     color: Colors.mainText,
   },

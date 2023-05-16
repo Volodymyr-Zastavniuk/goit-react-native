@@ -3,22 +3,30 @@ import { Text, View } from 'react-native';
 import { AuthFormStyles } from './AuthFormLayoutStyles';
 import { useState } from 'react';
 
-export const AuthFormLayout = ({ title, children }) => {
-  const [isKeyboardOpen, setisKeyboardOpen] = useState(false);
+export const AuthFormLayout = ({ title, children, login = false }) => {
+  const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
   const { formView, form, formTitle } = AuthFormStyles;
+  const topPadding = login ? 32 : 92;
+  const bottomPadding = login ? 144 : 78;
 
   return (
     <KeyboardAwareScrollView
       contentContainerStyle={formView}
       keyboardShouldPersistTaps="handled"
       onKeyboardDidShow={() => {
-        setisKeyboardOpen(true);
+        setIsKeyboardOpen(true);
       }}
       onKeyboardDidHide={() => {
-        setisKeyboardOpen(false);
+        setIsKeyboardOpen(false);
       }}
     >
-      <View style={{ ...form, paddingBottom: isKeyboardOpen ? 110 : 78 }}>
+      <View
+        style={{
+          ...form,
+          paddingTop: topPadding,
+          paddingBottom: isKeyboardOpen ? bottomPadding + 32 : bottomPadding,
+        }}
+      >
         <Text style={formTitle}>{title}</Text>
         {children}
       </View>
@@ -26,15 +34,7 @@ export const AuthFormLayout = ({ title, children }) => {
   );
 };
 
-// height: isKeyboardOpen ? '100%' : Dimensions.get('window').height,
-// <View style={{ ...form, paddingBottom: isKeyboardOpen ? 78 : 78 }}></View>
-
-//  contentContainerStyle={{
-//     ...formView,
-//     justifyContent: isKeyboardOpen ? 'center' : 'flex-end',
-//   }}
-
-// paddingBottom: Keyboard.isVisible() ? -32 - keyboardHeight : 0,
+// paddingBottom: Keyboard.isVisible() ? 32 - keyboardHeight : 0,
 
 // onKeyboardDidShow={e => {
 //   console.log(Keyboard.isVisible());
