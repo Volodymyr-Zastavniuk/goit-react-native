@@ -16,11 +16,11 @@ export const RegistrationForm = () => {
   const { avatarContainer, addAvatarBtn, avatarImage } = RegistrationFormStyles;
 
   const handleKeyboardClose = () => {
-    Keyboard.dismiss();
+    // Keyboard.dismiss();
   };
 
   return (
-    <AuthFormLayout title="Registration">
+    <AuthFormLayout title="Sign up">
       <View style={avatarContainer}>
         <Image
           style={avatarImage}
@@ -35,7 +35,7 @@ export const RegistrationForm = () => {
       <FormInput placeholder="Password" password />
 
       <PrimaryButton
-        title="Register"
+        title="Sign up"
         handleKeyboardClose={handleKeyboardClose}
       />
       <AuthLinkText>Already have an account? Login</AuthLinkText>

@@ -10,6 +10,7 @@ export const AuthFormLayout = ({ title, children }) => {
   return (
     <KeyboardAwareScrollView
       contentContainerStyle={formView}
+      keyboardShouldPersistTaps="handled"
       onKeyboardDidShow={() => {
         setisKeyboardOpen(true);
       }}
